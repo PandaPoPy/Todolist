@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+ 	 <meta charset="utf-8"/>
+ 	 <title>Test Angular JS</title>
+ 	 <meta name="titre"content="ToDoList"/>
+ 	 <link rel="stylesheet" href="style.css"/>
+	 
+
+	</head>
+
+	<body ng-app="ToDo">
+		<section id="todoapp" ng-controller="TodoCtrl">
+			<header id="header">
+				<h1>ToDo</h1>
+				<form action="#" id="todo-form" ng-submit="addTodo()">
+					<input type="text" id="new-todo" placeholder="{{placeholder}}" autofocus ng-model="newTodo" autocomplete="off"/>
+				</form>
+			</header>
+
+			<section id="main">
+				<input type="checkbox" id='toggle-all' ng-model="allchecked" ng-click="checkAllTodo(allchecked)">
+				<ul id="todo-list">
+					<li ng-repeat="todo in todos | orderBy:'name'| orderBy:'completed'" ng-class="{completed : todo.completed}">
+						<div class="view">
+							<input type="checkbox" class="togggle" ng-model="todo.completed"/>
+							<label>{{todo.name}}</label>
+							<button class="destroy" ng-click="removeTodo(todo.name)"></button> 
+						</div>
+					</li>
+					<!-- <li>
+						<div class="view">
+							<input type="checkbox" class="togggle" />
+							<label>travailler</label>
+							<button class="destroy"></button> 
+						</div>
+						<form action="#">
+							<input class="edit" value="travailler" />
+						</form>
+					</li> -->
+				</ul>
+			</section>
+			<footer id="footer">
+				<span id="todo-count"><strong>{{remaining}}</strong> tâche restantes</span>
+		</section>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	</body>	
+</html>
